@@ -42,11 +42,11 @@ lolcatjs.options.colors = true;
 const start = async (iluser = new Client()) => {
   try {
         console.log(color(figlet.textSync('----------------', { horizontalLayout: 'default' })))
-        console.log(color(figlet.textSync('  ILUSER BOT', { font: 'Ghost', horizontalLayout: 'default' })))
+        console.log(color(figlet.textSync('  ADYYBOTZ', { font: 'Ghost', horizontalLayout: 'default' })))
         console.log(color(figlet.textSync('----------------', { horizontalLayout: 'default' })))
-        lolcatjs.fromString('[DEV] ILUSER')
+        lolcatjs.fromString('[DEV] Adii')
         lolcatjs.fromString('[SERVER] Server Started!')
-        iluser.sendText('6283142933894@c.us','BOT started!!!');
+        iluser.sendText('60199782326@c.us','BOT started!!!');
         
         // process unread message
         iluser.getAllUnreadMessages().then(async unreadMessages => {
@@ -64,21 +64,21 @@ const start = async (iluser = new Client()) => {
                 .then(async (msg) => {
                     if (msg >= 3000) {
                       const chats = await iluser.getAllChats()
-                      iluser.sendText('6283142933894@c.us', `Processed auto clear with ${chats.length} chat!`)
-                        console.log('[CLNT]', color(`Loaded Message Reach ${msg}, cuting message cache...`, 'yellow'))
+                      iluser.sendText('60199782326@c.us', `Processed auto clear with ${chats.length} chat!`)
+                        console.log('[CLIENT]', color(`Loaded Message Reach ${msg}, cuting message cache...`, 'yellow'))
                         let deleted = 0, cleared = 0
                         for (let chat of chats) {
-                            if (!chat.isGroup && chat.id !== '6283142933894@c.us') {
+                            if (!chat.isGroup && chat.id !== '60199782326@c.us') {
                                 await iluser.deleteChat(chat.id)
                                 deleted += 1
                             }
-                            if (chat.id === '6283142933894@c.us' || chat.isGroup) {
+                            if (chat.id === '60199782326@c.us' || chat.isGroup) {
                                 await iluser.clearChat(chat.id)
                                 cleared += 1
                             }
                         }
                         iluser.cutMsgCache()
-                        iluser.sendText('6283142933894@c.us', `Chat deleted : ${deleted}\nChat cleared : ${cleared}`)
+                        iluser.sendText('60199782326@c.us', `Chat deleted : ${deleted}\nChat cleared : ${cleared}`)
                     }
                 })
             await queue.add(() => HandleMsg(iluser, message)).catch(err => {
@@ -93,7 +93,7 @@ const start = async (iluser = new Client()) => {
 
     // Force it to keep the current session
     iluser.onStateChanged((state) => {
-      console.log('[ILUSER STATE]', state)
+      console.log('[ADYY STATE]', state)
       if (state === 'UNPAIRED' || state === 'CONFLICT' || state === 'UNLAUNCHED' || state === 'OPENING') iluser.forceRefocus().then(() => queue.start())
   }).catch((err) => {
     console.log(err)
@@ -113,7 +113,7 @@ const start = async (iluser = new Client()) => {
         if (msg == undefined) {
           return
         }else if (msg.msg_add.length == 0) {
-          iluser.sendTextWithMentions(change.chat, `Hii @${target}\nSelamat datang di *${info.name}*, Silahkan untuk memperkenalkan diri.\n\nKetik ${prefix}menu untuk menggunakan bot`);
+          iluser.sendTextWithMentions(change.chat, `Hii @${target}\nSelamat datang di *${info.name}*\n\nKetik ${prefix}menu untuk menggunakan bot`);
         }else{
           const get_db = decodeURIComponent(msg.msg_add);
           // const nama = get_db.split('{nama}').join(`@${target}`);
